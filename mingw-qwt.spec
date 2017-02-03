@@ -8,7 +8,7 @@
 Name:           mingw-%{name1}
 Summary:        MinGW Windows Qwt library
 Version:        6.1.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 URL:            http://qwt.sourceforge.net
 License:        LGPLv2 with exceptions
 Group:          Development/Libraries
@@ -242,6 +242,9 @@ mv $RPM_BUILD_ROOT%{mingw64_libdir}/qt4/plugins/designer/%{name1}_designer_plugi
 %endif
 
 %changelog
+* Fri Feb 03 2017 Jajauma's Packages <jajauma@yandex.ru> - 6.1.2-5
+- Rebuild with GCC 5.4.0
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 6.1.2-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
