@@ -7,8 +7,8 @@
 
 Name:           mingw-%{name1}
 Summary:        MinGW Windows Qwt library
-Version:        6.1.2
-Release:        5%{?dist}
+Version:        6.1.3
+Release:        1%{?dist}
 URL:            http://qwt.sourceforge.net
 License:        LGPLv2 with exceptions
 Group:          Development/Libraries
@@ -19,6 +19,8 @@ Patch50:        qwt-6.1.1-pkgconfig.patch
 Patch51:        qwt-6.1.2-qt_install_paths.patch
 # parallel-installable qt5 version
 Patch52:        qwt-qt5.patch
+# ensure pc file has a version
+Patch100:       qwt-6.1.3-pkgconfig-version.patch
 BuildRequires:  mingw32-filesystem
 BuildRequires:  mingw64-filesystem
 BuildRequires:  mingw32-qt
@@ -79,6 +81,7 @@ pushd %{name1}-%{version}
 %patch50 -p1 -b .pkgconfig
 %patch51 -p1 -b .qt_install_paths
 %patch52 -p1 -b .qt5
+%patch100 -p1
 popd
 mv %{name1}-%{version} win32
 cp -r win32 win64
@@ -242,6 +245,10 @@ mv $RPM_BUILD_ROOT%{mingw64_libdir}/qt4/plugins/designer/%{name1}_designer_plugi
 %endif
 
 %changelog
+* Sun Apr 09 2017 Jajauma's Packages <jajauma@yandex.ru> - 6.1.3-1
+- Update to latest upstream release
+- Add patch to ensure .pc file has a version
+
 * Fri Feb 03 2017 Jajauma's Packages <jajauma@yandex.ru> - 6.1.2-5
 - Rebuild with GCC 5.4.0
 
